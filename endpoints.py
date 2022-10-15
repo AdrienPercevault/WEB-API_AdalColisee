@@ -9,10 +9,8 @@ import bcrypt
 
 
 load_dotenv()
-APP_SECRET_KEY = os.getenv("APP_SECRET_KEY")
-
 app = Flask(__name__)
-app.secret_key = "APP_SECRET_KEY"
+app.secret_key = os.getenv("APP_SECRET_KEY")
 CORS(app)
 
 # -- LOGIN PAGES --

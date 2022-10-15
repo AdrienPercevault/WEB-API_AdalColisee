@@ -4,7 +4,7 @@ import os
 
 
 load_dotenv()
-MONGO_URL = os.getenv('MONGO_URL')
+MONGODB_URL = os.getenv('MONGODB_URL')
 DATABASE_NAME = os.getenv('DATABASE_NAME')
 COLLECTION_NAME_TEAMS = os.getenv('COLLECTION_NAME_TEAMS')
 COLLECTION_NAME_USERS = os.getenv('COLLECTION_NAME_USERS')
@@ -13,7 +13,7 @@ COLLECTION_NAME_USERS = os.getenv('COLLECTION_NAME_USERS')
 class TeamsMongoAPI:
     # Initialisation of Mongo Database informations.
     def __init__(self):
-        self.client = MongoClient(MONGO_URL)  
+        self.client = MongoClient(MONGODB_URL)
         database = DATABASE_NAME
         collection = COLLECTION_NAME_TEAMS
 
@@ -65,7 +65,7 @@ class TeamsMongoAPI:
 class UsersMongoAPI:
     # Initialisation of Mongo Database informations.
     def __init__(self):
-        self.client = MongoClient(MONGO_URL)  
+        self.client = MongoClient(MONGODB_URL)
         database = DATABASE_NAME
         collection = COLLECTION_NAME_USERS
 
