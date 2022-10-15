@@ -1,13 +1,18 @@
 from flask import Flask, Response, request, render_template, session, redirect, url_for
 from mongodb.mongo_interactor import TeamsMongoAPI, UsersMongoAPI
 from flask_cors import CORS
+from dotenv import load_dotenv
+
+import os
 import json
 import bcrypt
-import gridfs
 
+
+load_dotenv()
+APP_SECRET_KEY = os.getenv("APP_SECRET_KEY")
 
 app = Flask(__name__)
-app.secret_key = "AdalColiseeSecretKey"
+app.secret_key = "APP_SECRET_KEY"
 CORS(app)
 
 # -- LOGIN PAGES --

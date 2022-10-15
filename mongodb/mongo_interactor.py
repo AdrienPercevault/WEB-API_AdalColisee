@@ -1,10 +1,13 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
 
 
-MONGO_URL = 'mongodb://localhost:27017/'
-DATABASE_NAME = 'AdalColisee'
-COLLECTION_NAME_TEAMS = 'Teams'
-COLLECTION_NAME_USERS = 'Users'
+load_dotenv()
+MONGO_URL = os.getenv('MONGO_URL')
+DATABASE_NAME = os.getenv('DATABASE_NAME')
+COLLECTION_NAME_TEAMS = os.getenv('COLLECTION_NAME_TEAMS')
+COLLECTION_NAME_USERS = os.getenv('COLLECTION_NAME_USERS')
 
 # TEAM API
 class TeamsMongoAPI:
