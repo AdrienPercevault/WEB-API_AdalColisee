@@ -1,0 +1,370 @@
+{% extends "base.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/planning.css') }}" rel="stylesheet">
+<script>var user_rank = '{{ user_rank }}';</script>
+
+<nav class="navbar-light sticky-top m-5" aria-label="Navigation planning">
+  <ul id="weeks-pagination" class="pagination justify-content-center weeks-pagination">
+    <!-- <li class="page-item"><a class="page-link" href="#" tabindex="-1">Précédent</a></li> -->
+    <li class="page-item mx-2"><a class="page-link" href="#week1">Semaine 1</a></li>
+    <li class="page-item mx-2"><a class="page-link" href="#week2">Semaine 2</a></li>
+    <li class="page-item mx-2"><a class="page-link" href="#week3">Semaine 3</a></li>
+    <li class="page-item mx-2"><a class="page-link" href="#week4">Semaine 4</a></li>
+    <li class="page-item mx-2"><a class="page-link" href="#week5">Semaine 5</a></li>
+    <!-- <li class="page-item"><a class="page-link" href="#">Suivant</a></li> -->
+  </ul>
+</nav>
+
+<div>
+  <!-- WEEK 1 -->
+  <div id="week1" class="container my-5 p-5">
+    <h1>Semaine 1</h1>
+    <div class="row my-5">
+      <div class="col">
+        <div class="league-name mb-5"><h2>League Gladiateur</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:45%;"></th>
+              <th style="width:10%;"></th>
+              <th style="width:45%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monarchie Fruitiere</td>
+              <td>VS</td>
+              <td>Morues</td>
+            </tr>
+            <tr>
+              <td>Zerotankiness</td>
+              <td>VS</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>Astral</td>
+              <td>VS</td>
+              <td>Banned Seagull</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="col">
+          <div class="league-name mb-5"><h2>League Berserker</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:45%;"></th>
+                <th style="width:10%;"></th>
+                <th style="width:45%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Initium</td>
+                <td>VS</td>
+                <td>Académie Fruitiere</td>
+              </tr>
+              <tr>
+                <td>Shteamles</td>
+                <td>VS</td>
+                <td>Police de Marseille</td>
+              </tr>
+              <tr>
+                <td>Spicy Gaming</td>
+                <td>VS</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="small">Du 03 octobre au 09 octobre</p>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div id="week2" class="container my-5 p-5">
+    <h1>Semaine 2</h1>
+    <div class="row my-5">
+      <div class="col">
+        <div class="league-name mb-5"><h2>League Gladiateur</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:45%;"></th>
+              <th style="width:10%;"></th>
+              <th style="width:45%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Morues</td>
+              <td>VS</td>
+              <td>Zerotankiness</td>
+            </tr>
+            <tr>
+              <td>Astral</td>
+              <td>VS</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>Monarchie Fruitiere</td>
+              <td>VS</td>
+              <td>Banned Seagull</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="col">
+          <div class="league-name mb-5"><h2>League Berserker</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:45%;"></th>
+                <th style="width:10%;"></th>
+                <th style="width:45%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Académie Fruitiere</td>
+                <td>VS</td>
+                <td>Shteamles</td>
+              </tr>
+              <tr>
+                <td>Police de Marseille</td>
+                <td>VS</td>
+                <td>Spicy Gaming</td>
+              </tr>
+              <tr>
+                <td>Initium</td>
+                <td>VS</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="small">Du 10 octobre au 16 octobre</p>
+  </div>
+  
+  <!-- WEEK 3 -->
+  <div id="week3" class="container my-5 p-5">
+    <h1>Semaine 3</h1>
+    <div class="row my-5">
+      <div class="col">
+        <div class="league-name mb-5"><h2>League Gladiateur</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:45%;"></th>
+              <th style="width:10%;"></th>
+              <th style="width:45%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Morues</td>
+              <td>VS</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>Monarchie Fruitiere</td>
+              <td>VS</td>
+              <td>Astral</td>
+            </tr>
+            <tr>
+              <td>Zerotankiness</td>
+              <td>VS</td>
+              <td>Banned Seagull</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="col">
+          <div class="league-name mb-5"><h2>League Berserker</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:45%;"></th>
+                <th style="width:10%;"></th>
+                <th style="width:45%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Académie Fruitiere</td>
+                <td>VS</td>
+                <td>Police de Marseille</td>
+              </tr>
+              <tr>
+                <td>Initium</td>
+                <td>VS</td>
+                <td>Spicy Gaming</td>
+              </tr>
+              <tr>
+                <td>Shteamles</td>
+                <td>VS</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="small">Du 17 octobre au 23 octobre</p>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div id="week4" class="container my-5 p-5">
+    <h1>Semaine 4</h1>
+    <div class="row my-5">
+      <div class="col">
+        <div class="league-name mb-5"><h2>League Gladiateur</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:45%;"></th>
+              <th style="width:10%;"></th>
+              <th style="width:45%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monarchie Fruitiere</td>
+              <td>VS</td>
+              <td>Zerotankiness</td>
+            </tr>
+            <tr>
+              <td>Morues</td>
+              <td>VS</td>
+              <td>Astral</td>
+            </tr>
+            <tr>
+              <td>Banned Seagull</td>
+              <td>VS</td>
+              <td>...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="col">
+          <div class="league-name mb-5"><h2>League Berserker</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:45%;"></th>
+                <th style="width:10%;"></th>
+                <th style="width:45%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Initium</td>
+                <td>VS</td>
+                <td>Shteamles</td>
+              </tr>
+              <tr>
+                <td>Académie Fruitiere</td>
+                <td>VS</td>
+                <td>Spicy Gaming</td>
+              </tr>
+              <tr>
+                <td>Police de Marseille</td>
+                <td>VS</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="small">Du 24 octobre au 30 octobre</p>
+  </div>
+
+  <!-- WEEK 5 -->
+  <div id="week5" class="container my-5 p-5">
+    <h1>Semaine 5</h1>
+    <div class="row my-5">
+      <div class="col">
+        <div class="league-name mb-5"><h2>League Gladiateur</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:45%;"></th>
+              <th style="width:10%;"></th>
+              <th style="width:45%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monarchie Fruitiere</td>
+              <td>VS</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>Zerotankiness</td>
+              <td>VS</td>
+              <td>Astral</td>
+            </tr>
+            <tr>
+              <td>Morues</td>
+              <td>VS</td>
+              <td>Banned Seagull</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="col">
+          <div class="league-name mb-5"><h2>League Berserker</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:45%;"></th>
+                <th style="width:10%;"></th>
+                <th style="width:45%;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Initium</td>
+                <td>VS</td>
+                <td>Police de Marseille</td>
+              </tr>
+              <tr>
+                <td>Spicy Gaming</td>
+                <td>VS</td>
+                <td>Shteamles</td>
+              </tr>
+              <tr>
+                <td>Académie Fruitiere</td>
+                <td>VS</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="small">Du 31 octobre au 06 novembre</p>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/planning.js') }}"></script>
+
+{% endblock %}

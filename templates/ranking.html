@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Colisee S3 - Classement{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/ranking.css') }}" rel="stylesheet">
+<script>var user_rank = '{{ user_rank }}';</script>
+
+<!-- LEAGUE GLADIATOR -->
+<div class="container mt-5 p-3">
+  <div class="me-auto p-2 bd-highlight" style="text-align:center;"><h1>Phase de poules</h1></div>
+  <div class="d-flex bd-highlight mb-3">
+    <div class="me-auto p-2 bd-highlight league-name"><h2>League Gladiateur</h2></div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="width:10%;">N°</th>
+          <th scope="col" style="width:10%;">TAG</th>
+          <th scope="col" style="width:50%;">Nom</th>
+          <th scope="col" style="text-align:center; width:15%;">Victoires</th>
+          {% if user_rank == "Admin" %}
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:green;">+</th>
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:red;">-</th>
+          {% endif %}
+          <th scope="col" style="text-align:center; width:15%;">Défaites</th>
+          {% if user_rank == "Admin" %}
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:green;">+</th>
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:red;">-</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody id="mytable-gladiator">
+        <tr>
+          <th scope="row" colspan="5">Loading...</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- LEAGUE BERSERKER -->
+<div class="container mt-5 p-3">
+  <div class="d-flex bd-highlight mb-3">
+    <div class="me-auto p-2 bd-highlight league-name"><h2>League Berserker</h2></div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="width:10%;">N°</th>
+          <th scope="col" style="width:10%;">TAG</th>
+          <th scope="col" style="width:50%;">Nom</th>
+          <th scope="col" style="text-align:center; width:15%;">Victoires</th>
+          {% if user_rank == "Admin" %}
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:green;">+</th>
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:red;">-</th>
+          {% endif %}
+          <th scope="col" style="text-align:center; width:15%;">Défaites</th>
+          {% if user_rank == "Admin" %}
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:green;">+</th>
+          <th scope="col" style="text-align:center; -webkit-text-fill-color:red;">-</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody id="mytable-berserker">
+        <tr>
+          <th scope="row" colspan="5">Loading...</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/ranking.js') }}"></script>
+
+{% endblock %}

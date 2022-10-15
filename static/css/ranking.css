@@ -1,0 +1,34 @@
+body {
+    background: #323232;
+}
+
+.btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background: #323232;
+    -webkit-text-fill-color: white;
+    border-image-source:  var(--gradient); 
+}
+
+.btn:hover, .btn:focus {
+    background: var(--gradient);
+    -webkit-text-fill-color: white;
+    border: 5px solid #14FFEC; 
+    box-shadow: #323232 1px 0 10px;
+    text-decoration: underline;
+}
+
+.league-name {
+    -webkit-text-fill-color: #4ECCA3;
+    border-bottom: 1px solid #4ECCA3;
+}
+
+thead, tbody, tr {
+    line-height: 4rem;
+    border-bottom: 1px solid #ECC19C;
+    color: rgba(250, 250, 250, 0.8);
+}
+
+th {
+    -webkit-text-fill-color: #ECC19C;
+}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/alert.css') }}" rel="stylesheet">
+
+{% if message  %}
+    <div class="alert alert-secondary m-3" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<form action="" method="post">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Inscription</h2>
+              <p class="text-danger mb-5">{{ message }}</p>
+
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="InputName">Pseudo</label>
+                <input type="text" name="user_name" id="InputName" class="form-control form-control-lg" placeholder="Pseudo"/>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="InputPassword1">Mot de passe</label>
+                <input type="password" name="user_password1" id="InputPassword1" class="form-control form-control-lg" placeholder="Mot de passe"/>
+              </div>
+              
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="InputPassword2">Mot de passe</label>
+                <input type="password" name="user_password2" id="InputPassword2" class="form-control form-control-lg" placeholder="Mot de passe"/>
+                <p class="small text-white-50 mb-5 pb-lg-2">Renseignez de nouveau votre mot de passe.</p>
+              </div>
+              
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">Inscription</button>
+            </div>
+            <p class="small text-white-50 pb-lg-2">N'oubliez pas votre mot de passe, il n'existe aucun moyen de le récupérer !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

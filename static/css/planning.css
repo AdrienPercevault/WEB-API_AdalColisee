@@ -1,0 +1,45 @@
+.container {
+    background: #323232;
+    border: 1px solid #ECC19C;
+    color: rgba(250, 250, 250, 0.8);
+    -webkit-text-fill-color: rgba(250, 250, 250, 0.8);
+    text-align:center;
+}
+
+.league-name {
+    text-align:center;
+    -webkit-text-fill-color: #4ECCA3;
+    border-bottom: 1px solid #ECC19C;
+}
+
+.footer-title {
+    -webkit-text-fill-color: #4FBDBA;
+}
+
+.footer-text {
+    -webkit-text-fill-color: #4FBDBA;
+}
+
+.pagination {
+    background: var(--gradient);
+}
+
+.pagination a {
+    background: none;
+    border: none;
+    color: rgba(250, 250, 250, 0.8);
+    float: left;
+}
+
+.pagination a:hover, .pagination a:focus {
+    background: none;
+    color: #4ECCA3;
+}
+
+.win {
+    -webkit-text-fill-color: green;
+}  
+
+.lose {
+    -webkit-text-fill-color: red;
+}

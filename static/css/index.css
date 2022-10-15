@@ -1,0 +1,40 @@
+:root {
+    --gradient: linear-gradient(to left top, #395B64 10%, #4FBDBA 90%);
+}
+
+body {
+    font-size: 1.25rem;
+    background: #111;
+    color: rgba(250, 250, 250, 0.8);
+}
+
+a {
+    color: rgba(250, 250, 250, 0.8);
+}
+
+hr {
+    border: 1px solid #ECC19C;
+}
+
+.bg-mynav {
+    background: var(--gradient);
+}
+
+.nav-list {
+    border-bottom: 1px solid #ECC19C;
+    -webkit-text-fill-color: #000;
+}
+
+.nav-list:hover, .nav-list:focus {
+    border-bottom: 1px solid #4ECCA3;
+}
+
+.card {
+    background: #323232;
+    border: 1px solid #ECC19C;
+    margin-bottom: 2rem;
+}
+
+.card-title {
+    -webkit-text-fill-color: #4ECCA3 !important;
+}

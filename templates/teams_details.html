@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/teams_details.css') }}" rel="stylesheet">
+
+<script>var user_rank = '{{ user_rank }}';</script>
+
+<div class="d-flex justify-content-center p-4">
+  <button id="add-team-button" type="button" class="btn btn-lg" onclick="showTeamCreateBox()" hidden="hidden">Ajout d'une nouvelle équipe</button>
+</div>
+
+<div class="container-fluid">
+  <div id="card-team" class="row row row-cols-1 row-cols-md-3 g-2">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/teams_details.js') }}"></script>
+
+{% endblock %}
