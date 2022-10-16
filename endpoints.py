@@ -13,6 +13,11 @@ app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY")
 CORS(app)
 
+# -- DEFAULT PAGE REDIRECT --
+@app.route('/')
+def index():
+    return redirect(url_for("ranking"))
+
 # -- LOGIN PAGES --
 @app.route("/signup", methods=['post', 'get'])
 def signup():
@@ -95,7 +100,6 @@ def ranking():
 def teams_details():
     user_rank = "Member"
     if "user_name" in session:
-        print(session)
         user_data = UsersMongoAPI().read_one_user({"user_name": session.get('user_name')})
         user_rank = user_data.get('user_rank')
     return render_template('teams_details.html', user_rank=user_rank)
