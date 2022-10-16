@@ -13,10 +13,10 @@ function loadTable() {
       gladiator_rank = 1;
       berserker_rank = 1;
       for (let object of objects) {
-        add_team_win = '<td><button type="button" class="btn btn-outline-success bi-plus" onclick="teamAddWin(\''+object['team_name']+'\', '+object['team_wins']+')"></button></td>'
-        remove_team_win = '<td><button type="button" class="btn btn-outline-danger bi-dash" onclick="teamRemoveWin(\''+object['team_name']+'\', '+object['team_wins']+')"></button></td>'
-        add_team_lose = '<td><button type="button" class="btn btn-outline-success bi-plus" onclick="teamAddLose(\''+object['team_name']+'\', '+object['team_loses']+')"></button></td>'
-        remove_team_lose = '<td><button type="button" class="btn btn-outline-danger bi-dash" onclick="teamRemoveLose(\''+object['team_name']+'\', '+object['team_loses']+')"></button></td>'
+        add_team_win = '<td><button type="button" class="btn btn-outline-success bi-plus" onclick="teamAddWin(\''+object['team_name']+'\', \''+object['team_wins']+'\', \''+object['team_score']+'\')"></button></td>'
+        remove_team_win = '<td><button type="button" class="btn btn-outline-danger bi-dash" onclick="teamRemoveWin(\''+object['team_name']+'\', \''+object['team_wins']+'\', \''+object['team_score']+'\')"></button></td>'
+        add_team_lose = '<td><button type="button" class="btn btn-outline-success bi-plus" onclick="teamAddLose(\''+object['team_name']+'\', \''+object['team_loses']+'\', \''+object['team_score']+'\')"></button></td>'
+        remove_team_lose = '<td><button type="button" class="btn btn-outline-danger bi-dash" onclick="teamRemoveLose(\''+object['team_name']+'\', \''+object['team_loses']+'\', \''+object['team_score']+'\')"></button></td>'
         if (object['team_league'].toLowerCase() == 'gladiateur') {
           trHTML_gladiator += '<tr>';
           trHTML_gladiator += '<td>'+ gladiator_rank++ +'</td>';
@@ -59,13 +59,15 @@ loadTable();
 //
 // ADD WIN
 //
-function teamAddWin(team_name, team_wins) {
+function teamAddWin(team_name, team_wins, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_wins++
+  team_score++
   xhttp.send(JSON.stringify({ 
     "team_wins": team_wins,
+    "team_score": team_score
   }));
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -77,13 +79,15 @@ function teamAddWin(team_name, team_wins) {
 //
 // REMOVE WIN
 //
-function teamRemoveWin(team_name, team_wins) {
+function teamRemoveWin(team_name, team_wins, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_wins--
+  team_score--
   xhttp.send(JSON.stringify({ 
     "team_wins": team_wins,
+    "team_score": team_score
   }));
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -95,13 +99,15 @@ function teamRemoveWin(team_name, team_wins) {
 //
 // ADD LOSE
 //
-function teamAddLose(team_name, team_loses) {
+function teamAddLose(team_name, team_loses, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_loses++
+  team_score--
   xhttp.send(JSON.stringify({ 
     "team_loses": team_loses,
+    "team_score": team_score
   }));
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -113,13 +119,15 @@ function teamAddLose(team_name, team_loses) {
 //
 // REMOVE LOSE
 //
-function teamRemoveLose(team_name, team_loses) {
+function teamRemoveLose(team_name, team_loses, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_loses--
+  team_score++
   xhttp.send(JSON.stringify({ 
     "team_loses": team_loses,
+    "team_score": team_score
   }));
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
