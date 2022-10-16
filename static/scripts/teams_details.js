@@ -1,10 +1,3 @@
-// DEV LINK
-// APP_LINK = "http://localhost:5000/"
-// PROD LINK
-APP_LINK = "https://adalcolisee.herokuapp.com/"
-
-
-
 // Init button to add a team by making it visible only for admin user's.
 function init_add_team_button() {
   let add_team_button = document.getElementById('add-team-button');
@@ -21,7 +14,7 @@ init_add_team_button();
 //
 function loadTable() {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", APP_LINK+"teams?sort=True");
+  xhttp.open("GET", "/teams?sort=True");
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -151,7 +144,7 @@ function teamCreate() {
   const team_opgg = document.getElementById('team_opgg').value;
 
   const xhttp = new XMLHttpRequest();
-  xhttp.open("POST", APP_LINK+"teams");
+  xhttp.open("POST", "/teams");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "team_tag": team_tag,
@@ -174,7 +167,7 @@ function teamCreate() {
 // 
 function showTeamEditBox(team_name) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("GET", "/teams?team_name="+team_name);
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -276,7 +269,7 @@ function teamEdit(default_team_name) {
   const team_opgg = document.getElementById('team_opgg').value;
     
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", APP_LINK+"teams?team_name="+default_team_name);
+  xhttp.open("PUT", "/teams?team_name="+default_team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "team_tag": team_tag,
@@ -300,7 +293,7 @@ function teamEdit(default_team_name) {
 //
 function teamDelete(team_name) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("DELETE", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("DELETE", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "team_name": team_name
@@ -323,7 +316,7 @@ function teamDelete(team_name) {
 //
 function showAddMemberBox(team_name) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("GET", "/teams?team_name="+team_name);
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -356,7 +349,7 @@ function addMember(team_name, team_members) {
   team_members.push(team_member)
     
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "team_members": team_members
@@ -375,7 +368,7 @@ function addMember(team_name, team_members) {
 //
 function removeMember(team_name, index) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("GET", "/teams?team_name="+team_name);
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -383,7 +376,7 @@ function removeMember(team_name, index) {
       team_members = object["team_members"]
       team_members.splice(index, 1)
 
-      xhttp.open("PUT", APP_LINK+"teams?team_name="+team_name);
+      xhttp.open("PUT", "/teams?team_name="+team_name);
       xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       xhttp.send(JSON.stringify({ 
         "team_members": team_members

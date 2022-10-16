@@ -1,16 +1,9 @@
-// DEV LINK
-// APP_LINK = "http://localhost:5000/"
-// PROD LINK
-APP_LINK = "https://adalcolisee.herokuapp.com/"
-
-
-
 //
 // LOAD
 //
 function loadTable() {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", APP_LINK+"teams");
+  xhttp.open("GET", "/teams");
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -68,7 +61,7 @@ loadTable();
 //
 function teamAddWin(team_name, team_wins) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_wins++
   xhttp.send(JSON.stringify({ 
@@ -86,7 +79,7 @@ function teamAddWin(team_name, team_wins) {
 //
 function teamRemoveWin(team_name, team_wins) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_wins--
   xhttp.send(JSON.stringify({ 
@@ -104,7 +97,7 @@ function teamRemoveWin(team_name, team_wins) {
 //
 function teamAddLose(team_name, team_loses) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_loses++
   xhttp.send(JSON.stringify({ 
@@ -122,7 +115,7 @@ function teamAddLose(team_name, team_loses) {
 //
 function teamRemoveLose(team_name, team_loses) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", APP_LINK+"teams?team_name="+team_name);
+  xhttp.open("PUT", "/teams?team_name="+team_name);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   team_loses--
   xhttp.send(JSON.stringify({ 
