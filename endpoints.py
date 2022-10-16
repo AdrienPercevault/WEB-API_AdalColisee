@@ -106,7 +106,11 @@ def teams_details():
 
 @app.route('/planning')
 def planning():
-    return render_template('planning.html')
+    user_rank = "Member"
+    if "user_name" in session:
+        user_data = UsersMongoAPI().read_one_user({"user_name": session.get('user_name')})
+        user_rank = user_data.get('user_rank')
+    return render_template('planning.html', user_rank=user_rank)
 
 
 
@@ -183,5 +187,5 @@ def mongo_delete():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, port=5001, host='0.0.0.0') # Dev
-    app.run()
+    app.run(debug=True, port=5001, host='0.0.0.0') # Dev
+    # app.run()
