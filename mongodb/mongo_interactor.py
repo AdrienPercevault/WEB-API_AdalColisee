@@ -13,7 +13,7 @@ COLLECTION_NAME_USERS = os.getenv('COLLECTION_NAME_USERS')
 class TeamsMongoAPI:
     # Initialisation of Mongo Database informations.
     def __init__(self):
-        self.client = MongoClient(MONGODB_URL)
+        self.client = MongoClient(MONGODB_URL, connect=False)
         database = DATABASE_NAME
         collection = COLLECTION_NAME_TEAMS
 
