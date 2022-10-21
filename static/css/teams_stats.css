@@ -1,0 +1,41 @@
+canvas {
+    background: #323232;
+    border: 1px solid #ECC19C;
+}
+
+.cells {
+    background: #323232;
+    border: 1px solid #ECC19C;
+    text-align:center;
+}
+
+.team-title {
+    color: #4ECCA3;
+    text-align:center;
+}
+
+hr {
+    border: 2px solid #4ECCA3;
+    opacity: 1;
+}
+
+.btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background: #323232;
+    -webkit-text-fill-color: white;
+    border-image-source: var(--gradient); 
+    width: 100%;
+}
+
+.btn:hover, .btn:focus {
+    background: var(--gradient);
+    -webkit-text-fill-color: white;
+    border: 5px solid #14FFEC; 
+    box-shadow: #323232 1px 0 10px;
+}
+
+
+.categorie {
+    -webkit-text-fill-color: #ECC19C;
+}

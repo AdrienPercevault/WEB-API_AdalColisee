@@ -1,0 +1,186 @@
+{% extends "index.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/add_game.css') }}" rel="stylesheet">
+
+<div class="row m-4">
+  <!-- BLUE SIDE -->
+  <div class="col container-fluid mx-2 game-side" style="border: 1px solid blue">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"><h2>Blue Side</h2></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 15%;"><h1 id="blue-side-winner-left"></h1></td>
+          <td style="width: 70%;"><h1 id="team-blue-side"></h1></td>
+          <td style="width: 15%;"><h1 id="blue-side-winner-right"></h1></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mt-md-4 pb-5">
+      <!-- KDA -->
+      <div class="row">
+        <h4 class="text-uppercase">K D A</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Kills</label>
+          <input id="blue-side-kills" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+        <div class="form-outline form-white col mb-4">
+          <label>Morts</label>
+          <input id="blue-side-deaths" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+        <div class="form-outline form-white col mb-4">
+          <label>Assists</label>
+          <input id="blue-side-assists" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+      </div>
+
+      <!-- GOLD EARNED -->
+      <div class="row">
+        <h4 class="text-uppercase">Or total gagné</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Or total gagné</label>
+          <input id="blue-side-golds" type="number" class="form-control mb-2" placeholder="2500" min=2500 step="500" disabled>
+        </div>
+      </div>
+
+      <!-- STRUCTURES -->
+      <div class="row">
+        <h4 class="text-uppercase">Structures détruites</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Tourelles détruites</label>
+          <input id="blue-side-towers" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+
+        <div class="form-outline form-white col mb-4">
+          <label>Inibiteurs détruits</label>
+          <input id="blue-side-inibitors" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+      </div>
+
+      <!-- MOBS KILL -->
+      <div class="row">
+        <h4 class="text-uppercase">Monstres tués</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Héralds tués</label>
+          <input id="blue-side-heralds" type="number" class="form-control mb-2" placeholder="0" min=0 max=2 disabled>
+        </div>
+
+        <div class="form-outline form-white col mb-4">
+          <label>Dragons tués</label>
+          <input id="blue-side-dragons" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+
+        <div class="form-outline form-white col mb-4">
+          <label>Barons tués</label>
+          <input id="blue-side-barons" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- RED SIDE -->
+  <div class="col container-fluid mx-2 game-side" style="border: 1px solid red">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"><h2>Red Side</h2></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 15%;"><h1 id="red-side-winner-left"></h1></td>
+          <td style="width: 70%;"><h1 id="team-red-side"></h1></td>
+          <td style="width: 15%;"><h1 id="red-side-winner-right"></h1></td>
+        </tr>
+      </tbody>
+    </table>    
+    <div class="mt-md-4 pb-5">
+      <!-- KDA -->
+      <div class="row">
+        <h4 class="text-uppercase">K D A</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Kills</label>
+          <input id="red-side-kills" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+        <div class="form-outline form-white col mb-4">
+          <label>Morts</label>
+          <input id="red-side-deaths" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+        <div class="form-outline form-white col mb-4">
+          <label>Assists</label>
+          <input id="red-side-assists" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+      </div>
+
+      <!-- GOLD EARNED -->
+      <div class="row">
+        <h4 class="text-uppercase">Or total gagné</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Or total gagné</label>
+          <input id="red-side-golds" type="number" class="form-control mb-2" placeholder="2500" min=2500 step="500" disabled>
+        </div>
+      </div>
+
+      <!-- STRUCTURES -->
+      <div class="row">
+        <h4 class="text-uppercase">Structures détruites</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Tourelles détruites</label>
+          <input id="red-side-towers" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+
+        <div class="form-outline form-white col mb-4">
+          <label>Inibiteurs détruits</label>
+          <input id="red-side-inibitors" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+      </div>
+
+      <!-- MOBS KILL -->
+      <div class="row">
+        <h4 class="text-uppercase">Monstres tués</h4>
+        <div class="form-outline form-white col mb-4">
+          <label>Héralds tués</label>
+          <input id="red-side-heralds" type="number" class="form-control mb-2" placeholder="0" min=0 max=2 disabled>
+        </div>
+
+        <div class="form-outline form-white col mb-4">
+          <label>Dragons tués</label>
+          <input id="red-side-dragons" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+
+        <div class="form-outline form-white col mb-4">
+          <label>Barons tués</label>
+          <input id="red-side-barons" type="number" class="form-control mb-2" placeholder="0" min=0 disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container p-4" style="text-align:center;">
+  <h4 class="text-uppercase">Durée de la game</h4>
+  <div class="form-outline form-white col m-4" >
+    <label>Durée de la game</label>    
+    <input id="duration" type="text" class="form-control mb-2" placeholder="00:00" pattern="\d\d:\d\d" style="text-align:center;" disabled>
+    <p class="small">Doit être de la forme : <b>"minutes:secondes"</b> exemple pour une game de 27 minutes et 56 secondes : <b>"27:56"</b></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="d-flex justify-content-center col m-4">
+    <input id="add-game-button" type="submit" class="btn btn-lg" onclick="addGame()" value="Créer" disabled/>
+  </div>
+  <div class="d-flex justify-content-center col m-4">
+    <input id="update-game-button" type="submit" class="btn btn-lg" onclick="updateGame()" value="Update" disabled/>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/add_game.js') }}"></script>
+
+{% endblock %}

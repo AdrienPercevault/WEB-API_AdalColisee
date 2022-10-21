@@ -32,13 +32,18 @@ function loadTable() {
           <div class="card">
             <div class="card-body">
               <div class="col">
-                <h3 class="card-title"><b>[`+object[`team_tag`]+`]</b> `+object[`team_name`]+`</h5>
-                <p class="card-text mt-4">`+object[`team_description`]+`</p>
+                <h3 class="card-title"><b>[`+object[`team_tag`]+`]</b> `+object[`team_name`]+`</h3>
+                <p class="card-text mt-4 description">`+object[`team_description`]+`</p>
                 <hr></hr>
                 <p class="card-text"><b>Capitaine</b> : `+object[`team_captain`]+`</p>
                 <p class="card-text"><b>Ligue</b> : `+object[`team_league`]+`</p>
                 <p class="card-text"><b>Opgg</b> : <a href="`+object[`team_opgg`]+`">[Lien]</a></p>`
   
+        if (object[`team_coach`] !== 'Non renseigné') {
+          cardHTML += `
+          <p class="card-text"><b>Coach</b> : `+object[`team_coach`]+`</p>`
+        }
+
         if (object[`team_members`] !== 'undefined') {
           cardHTML += `
           <div class="card card-body d-flex justify-content-center mb-4">
@@ -56,9 +61,9 @@ function loadTable() {
 
           if (user_rank == "Admin") {
             cardHTML += `
-                <li class="list list-group-item d-flex justify-content-center">
-                  <button type="button" class="btn-small btn-lg" onclick="showAddMemberBox(\``+object[`team_name`]+`\`)">Ajouter un membre</button>
-                </li>`
+            <li class="list list-group-item d-flex justify-content-center">
+              <button type="button" class="btn-small btn-lg" onclick="showAddMemberBox(\``+object[`team_name`]+`\`)">Ajouter un membre</button>
+            </li>`
           }
         }
 
@@ -109,7 +114,7 @@ function showTeamCreateBox() {
         <input id="team_captain" type="text" class="form-control form-control-lg" placeholder="Capitaine"/>
       </div>
 
-      <select id="team_league" class="swal2-input mb-4 league-select">
+      <select id="team_league" class="swal2-input mb-4 select">
         <option value="" selected disabled hidden>--Choisissez une ligue--</option>
         <option value="gladiateur">Gladiateur</option>
         <option value="berserker">Berserker</option>
@@ -189,7 +194,7 @@ function showTeamEditBox(team_name) {
               <input id="team_captain" type="text" class="form-control form-control-lg" placeholder="Capitaine" value="`+object[`team_captain`]+`"/>
             </div>
 
-            <select id="team_league" class="swal2-input mb-4 league-select">
+            <select id="team_league" class="swal2-input mb-4 select">
               <option value="" disabled hidden>--Choisissez une ligue--</option>
               <option value="gladiateur">Gladiateur</option>
               <option value="berserker" selected>Berserker</option>
@@ -231,7 +236,7 @@ function showTeamEditBox(team_name) {
               <input id="team_captain" type="text" class="form-control form-control-lg" placeholder="Capitaine" value="`+object[`team_captain`]+`"/>
             </div>
 
-            <select id="team_league" class="swal2-input mb-4 league-select">
+            <select id="team_league" class="swal2-input mb-4 select">
               <option value="" disabled hidden>--Choisissez une ligue--</option>
               <option value="gladiateur">Gladiateur</option>
               <option value="berserker">Berserker</option>

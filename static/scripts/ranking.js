@@ -1,6 +1,7 @@
-//
-// LOAD
-//
+// ----- LOAD ----- //
+// ---------------- //
+
+// Load ranks
 function loadTable() {
   const xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/teams");
@@ -56,9 +57,14 @@ function loadTable() {
 
 loadTable();
 
-//
-// ADD WIN
-//
+
+
+
+
+// ----- OPERATIONS ----- //
+// ---------------------- //
+
+// Add win
 function teamAddWin(team_name, team_wins, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
@@ -76,9 +82,7 @@ function teamAddWin(team_name, team_wins, team_score) {
   };
 }
 
-//
-// REMOVE WIN
-//
+// Remove win
 function teamRemoveWin(team_name, team_wins, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
@@ -96,9 +100,7 @@ function teamRemoveWin(team_name, team_wins, team_score) {
   };
 }
 
-//
-// ADD LOSE
-//
+// Add lose
 function teamAddLose(team_name, team_loses, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);
@@ -116,9 +118,7 @@ function teamAddLose(team_name, team_loses, team_score) {
   };
 }
 
-//
-// REMOVE LOSE
-//
+// Remove lose
 function teamRemoveLose(team_name, team_loses, team_score) {
   const xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/teams?team_name="+team_name);

@@ -1,0 +1,163 @@
+{% extends "index.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/teams_stats.css') }}" rel="stylesheet">
+
+<div class="container-fluid p-5">
+  <div class="row mb-5 p-2 cells">
+    <h1 id="team_name" class="team-title">Statistiques globales de </h1>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- Total Kda -->
+      <div class="row">
+        <div class="col mx-2 cells">
+          <label class="text-uppercase categorie">KDA total</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m-2 cells">
+          <label id="kills-sum">Kills : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="deaths-sum">Morts : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="assists-sum">Assists : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="kda-sum">KDA : </label>
+        </div>
+      </div>
+      <!-- Average KDA -->
+      <div class="row mt-2">
+        <div class="col mx-2 cells">
+          <label class="text-uppercase categorie">KDA moyen</label>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col m-2 cells">
+          <label id="kills-average">Kills : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="deaths-average">Morts : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="assists-average">Assists : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="kda-average">KDA : </label>
+        </div>
+      </div>
+      <!-- Chart KDA -->
+      <div class="d-flex justify-content-center mb-2">
+        <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#collapseChartKda">Afficher le graphe : "KDA par game"</button>
+      </div>
+      <div id="collapseChartKda" class="row collapse">
+        <div class="col m-2 cells">
+          <h3 class="p-2">Kills, morts et assists par game</h3>
+          <canvas id="chart-kda"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <!-- Total structures & monsters -->
+      <div class="row">
+        <div class="col mx-2 cells">
+          <label class="text-uppercase categorie">Total structures détruites & monstres tués</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m-2 cells">
+          <label id="towers-sum">Tourelles : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="inibitors-sum">Inibiteurs : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="heralds-sum">Héralds : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="dragons-sum">Dragons : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="barons-sum">Barons : </label>
+        </div>
+      </div>
+      <!-- Average structures & monsters -->
+      <div class="row mt-2">
+        <div class="col mx-2 cells">
+          <label class="text-uppercase categorie">Structures détruites & monstres tués moyen</label>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col m-2 cells">
+          <label id="towers-average">Tourelles : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="inibitors-average">Inibiteurs : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="heralds-average">Héralds : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="dragons-average">Dragons : </label>
+        </div>
+        <div class="col m-2 cells">
+          <label id="barons-average">Barons : </label>
+        </div>
+      </div>
+      <!-- Chart structures & monsters -->
+      <div class="d-flex justify-content-center mb-2">
+        <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#collapseChartStructuresMonsters">Afficher le graphe : "Structures & monstres par game"</button>
+      </div>
+      <div id="collapseChartStructuresMonsters" class="row collapse">
+        <div class="col m-2 cells">
+          <h3 class="p-2">Structures détruites et monstres tués par game</h3>
+          <canvas id="chart-structures-monsters"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-5">
+
+  <!-- Average durations & golds -->
+  <div class="row">
+    <div class="col mx-2 cells">
+      <label class="text-uppercase categorie">Durée & or moyen par games</label>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col m-2 cells">
+      <label id="duration-average">Durée : </label>
+    </div>
+    <div class="col m-2 cells">
+      <label id="golds-average">Or : </label>
+    </div>
+  </div>
+  <!-- Chart durations & golds -->
+  <div class="d-flex justify-content-center mb-2">
+    <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#collapseChartDurationGolds">Afficher les graphes : "Durée de game & or par game"</button>
+  </div>
+  <div id="collapseChartDurationGolds" class="row collapse">
+    <div class="col m-2 cells">
+      <h3 class="p-2">Durée de game</h3>
+      <canvas id="chart-duration"></canvas>
+    </div>
+    <div class="col m-2 cells">
+      <h3 class="p-2">Golds par game</h3>
+      <canvas id="chart-golds"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/teams_stats.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+{% endblock %}

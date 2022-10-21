@@ -1,0 +1,42 @@
+.form-control {
+    background: #e1e1e1;
+    color: black;
+}
+
+.game-side, .container {
+    background: #323232;
+    border: 1px solid #ECC19C; 
+}
+
+table {
+    width: 100%;
+}
+
+h1 {
+    -webkit-text-fill-color: #4ECCA3;
+    text-align:center;
+}
+
+h2 {
+    text-align:center;
+}
+
+h4 {
+    -webkit-text-fill-color: #ECC19C;
+}
+
+.btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background: #323232;
+    -webkit-text-fill-color: white;
+    border-image-source: var(--gradient); 
+    width: 100%;
+}
+
+.btn:hover, .btn:focus {
+    background: var(--gradient);
+    -webkit-text-fill-color: white;
+    border: 5px solid #14FFEC; 
+    box-shadow: #323232 1px 0 10px;
+}

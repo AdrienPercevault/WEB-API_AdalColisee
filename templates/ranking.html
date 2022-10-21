@@ -1,14 +1,16 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 {% block title %}Colisee S3 - Classement{% endblock %}
 
 {% block content %}
 
 <link href="{{ url_for('static', filename='/css/ranking.css') }}" rel="stylesheet">
-<script>var user_rank = '{{ user_rank }}';</script>
+
+<div class="container mt-5 p-2">
+  <h1 class="text-uppercase phase-title">Phase de groupe</h1>
+</div>
 
 <!-- LEAGUE GLADIATOR -->
-<div class="container mt-5 p-3">
-  <div class="me-auto p-2 bd-highlight" style="text-align:center;"><h1>Phase de poules</h1></div>
+<div class="container mt-5 p-5">
   <div class="d-flex bd-highlight mb-3">
     <div class="me-auto p-2 bd-highlight league-name"><h2>League Gladiateur</h2></div>
   </div>
@@ -41,7 +43,7 @@
 </div>
 
 <!-- LEAGUE BERSERKER -->
-<div class="container mt-5 p-3">
+<div class="container mt-5 p-5">
   <div class="d-flex bd-highlight mb-3">
     <div class="me-auto p-2 bd-highlight league-name"><h2>League Berserker</h2></div>
   </div>

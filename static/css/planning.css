@@ -1,10 +1,11 @@
-.container {
+.carousel {
     background: #323232;
     border: 1px solid #ECC19C;
     color: rgba(250, 250, 250, 0.8);
     -webkit-text-fill-color: rgba(250, 250, 250, 0.8);
     text-align:center;
 }
+
 
 .league-name {
     text-align:center;
@@ -46,4 +47,44 @@
 
 .bi-trophy {
     -webkit-text-fill-color: #4ECCA3;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    width: 50px;
+    height: 50px;
+    background-color: #ECC19C;
+    border-radius: 50%;
+    top: 50%;
+}
+
+.carousel-control-prev {
+    left: 3%;
+}
+
+.carousel-control-next {
+    right: 3%;
+}
+
+
+
+
+a {
+    all: unset;
+    cursor: pointer;
+}
+
+.add-game:hover, .add-game:focus {
+    -webkit-text-fill-color: #ECC19C;
+    border: 1px solid #ECC19C;
+    background: none;
+}
+
+table tr td a {
+    display: block;
 }

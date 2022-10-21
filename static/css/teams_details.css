@@ -36,6 +36,10 @@
     box-shadow: #323232 1px 0 10px;
 }
 
-.league-select {
+.select {
     background: white;
+}
+
+.description {
+    -webkit-text-fill-color: #ECC19C;
 }

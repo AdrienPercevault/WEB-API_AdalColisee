@@ -1,5 +1,5 @@
 body {
-    background: #323232;
+    background: #000;
 }
 
 .btn {
@@ -15,7 +15,6 @@ body {
     -webkit-text-fill-color: white;
     border: 5px solid #14FFEC; 
     box-shadow: #323232 1px 0 10px;
-    text-decoration: underline;
 }
 
 .league-name {

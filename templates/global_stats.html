@@ -1,0 +1,341 @@
+{% extends "index.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/teams_stats.css') }}" rel="stylesheet">
+
+
+
+<div class="container-fluid p-5">
+  <div class="row p-2 cells">
+    <h1 id="team_name" class="team-title">Statistiques globales</h1>
+  </div>
+
+  <!-- Kills, deaths, assists & kda total -->
+  <div class="d-flex justify-content-center mt-5 mb-2">
+    <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#rankingKdaTotal">Afficher les statistiques de kills, morts et assists total</button>
+  </div>
+  <div id="rankingKdaTotal" class="collapse">
+    <div class="row mb-2">
+      <div class="col mx-1 cells">
+        <label class="text-uppercase categorie">Classement : kills, morts, assists & KDA Total</label>
+      </div>
+    </div>
+    <!-- Ranking kills -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Kills</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kills-team"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kills"></label>
+      </div>
+    </div>
+    <!-- Ranking deaths -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Morts</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-deaths-team"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-deaths"></label>
+      </div>
+    </div>
+    <!-- Ranking assists -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Assists</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-assists-team"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-assists"></label>
+      </div>
+    </div>
+    <!-- Ranking kda -->
+    <div class="row mb-2">
+      <div class="col m-1 cells">
+        <label>KDA</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kda-team"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kda"></label>
+      </div>
+    </div>
+    <!-- Pie Charts -->
+    <div class="row">
+      <div class="col m-2 cells">
+        <h3 class="p-2">Kills par Team</h3>
+        <canvas id="chart-kills"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Morts par Team</h3>
+        <canvas id="chart-deaths"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Assists par Team</h3>
+        <canvas id="chart-assists"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-5">
+
+  <!-- Kills, deaths, assists & kda average -->
+  <div class="d-flex justify-content-center mt-5 mb-2">
+    <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#rankingKdaAverage">Afficher les statistiques moyenne de kills, morts et assists</button>
+  </div>
+  <div id="rankingKdaAverage" class="collapse">
+    <div class="row mb-2">
+      <div class="col mx-1 cells">
+        <label class="text-uppercase categorie">Classement : kills, morts, assists & KDA moyen</label>
+      </div>
+    </div>
+    <!-- Ranking kills -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Kills</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kills-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kills-average"></label>
+      </div>
+    </div>
+    <!-- Ranking deaths -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Morts</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-deaths-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-deaths-average"></label>
+      </div>
+    </div>
+    <!-- Ranking assists -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Assists</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-assists-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-assists-average"></label>
+      </div>
+    </div>
+    <!-- Ranking kda -->
+    <div class="row mb-2">
+      <div class="col m-1 cells">
+        <label>KDA</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kda-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-kda-average"></label>
+      </div>
+    </div>
+    <!-- Pie Charts -->
+    <div class="row">
+      <div class="col m-2 cells">
+        <h3 class="p-2">Kills moyen par Team</h3>
+        <canvas id="chart-kills-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Morts moyenne par Team</h3>
+        <canvas id="chart-deaths-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Assists moyenne par Team</h3>
+        <canvas id="chart-assists-average"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-5">
+
+  <!-- Game duration & golds -->
+  <div class="d-flex justify-content-center mt-5 mb-2">
+    <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#rankingDurationGoldsAverage">Afficher les statistiques moyenne de durée et d'or</button>
+  </div>
+  <div id="rankingDurationGoldsAverage" class="collapse">
+    <div class="row mt-5 mb-2">
+      <div class="col mx-1 cells">
+        <label class="text-uppercase categorie">Classement : durée & or moyen</label>
+      </div>
+    </div>
+    <!-- Ranking duration -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Durée moyenne</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-duration-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-duration-average"></label>
+      </div>
+    </div>
+    <!-- Ranking golds -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Or moyen</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-golds-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-golds-average"></label>
+      </div>
+    </div>
+    <!-- Pie Charts -->
+    <div class="row">
+      <div class="col m-2 cells">
+        <h3 class="p-2">Durée moyenne par team</h3>
+        <canvas id="chart-duration-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Or moyen par team</h3>
+        <canvas id="chart-golds-average"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-5">
+
+  <!-- Structures & monsters average -->
+  <div class="d-flex justify-content-center mt-5 mb-2">
+    <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#rankingStructuresMonstersAverage">Afficher les statistiques moyenne de structures détruites et monstres tués</button>
+  </div>
+  <div id="rankingStructuresMonstersAverage" class="collapse">
+    <div class="row mb-2">
+      <div class="col mx-1 cells">
+        <label class="text-uppercase categorie">Classement : structures détruites et monstres tués moyen</label>
+      </div>
+    </div>
+    <!-- Ranking towers -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Tourelles</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-towers-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-towers-average"></label>
+      </div>
+    </div>
+    <!-- Ranking inibitors -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Inibiteurs</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-inibitors-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-inibitors-average"></label>
+      </div>
+    </div>
+    <!-- Ranking heralds -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Héralds</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-heralds-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-heralds-average"></label>
+      </div>
+    </div>
+    <!-- Ranking dragons -->
+    <div class="row">
+      <div class="col m-1 cells">
+        <label>Dragons</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-dragons-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-dragons-average"></label>
+      </div>
+    </div>
+    <!-- Ranking barons -->
+    <div class="row mb-2">
+      <div class="col m-1 cells">
+        <label>Barons</label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-barons-team-average"></label>
+      </div>
+      <div class="col m-1 cells">
+        <label id="best-barons-average"></label>
+      </div>
+    </div>
+    <!-- Pie Charts -->
+    <div class="row">
+      <div class="col m-2 cells">
+        <h3 class="p-2">Tourelles moyenne détruites par Team</h3>
+        <canvas id="chart-towers-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Inibiteurs moyen détruits par Team</h3>
+        <canvas id="chart-inibitors-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Héralds moyen tués par Team</h3>
+        <canvas id="chart-heralds-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Dragons moyen tués par Team</h3>
+        <canvas id="chart-dragons-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">barons moyenne tués par Team</h3>
+        <canvas id="chart-barons-average"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-5">
+
+  <!-- Stats global -->
+  <div class="d-flex justify-content-center mt-5 mb-2">
+    <button type="button" class="btn btn-lg" data-bs-toggle="collapse" data-bs-target="#statsGlobal">Afficher deux graphes récapitulatif par team</button>
+  </div>
+  <div id="statsGlobal" class="collapse">
+    <div class="row">
+      <div class="col m-2 cells">
+        <h3 class="p-2">KDA moyen par Team</h3>
+        <canvas id="chart-kda-average"></canvas>
+      </div>
+      <div class="col m-2 cells">
+        <h3 class="p-2">Structures moyenne détruites par Team</h3>
+        <canvas id="chart-structures-monsters-average"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-5">
+
+</div>
+
+
+
+<script src="{{ url_for('static', filename='/scripts/global_stats.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+{% endblock %}
