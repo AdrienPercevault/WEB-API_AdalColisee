@@ -365,6 +365,7 @@ function createTeamsStats() {
 
 // Init teams dict
 function initDict(team_list_name, duration="00:00", kills=0, deaths=0, assists=0, towers=0, inibitors=0, barons=0, dragons=0, heralds=0, golds=0, wins=0, loses=0) {
+  console.log(duration)
   if (team_list_name !== undefined) {
     return {
       "game_duration": addTimes([team_list_name["game_duration"], duration]),
@@ -418,11 +419,13 @@ function addTimes(time_list) {
   t1_mins = 0;
   t1_secs = 0;
   for (time of time_list) {
-    t2_mins = parseInt(time.split(':')[0]);
-    t2_secs = parseInt(time.split(':')[1]);
-    seconds = t1_secs + t2_secs
-    t1_mins = t1_mins + t2_mins + Math.floor(seconds / 60)
-    t1_secs = seconds % 60
+    if (time !== '') {
+      t2_mins = parseInt(time.split(':')[0]);
+      t2_secs = parseInt(time.split(':')[1]);
+      seconds = t1_secs + t2_secs
+      t1_mins = t1_mins + t2_mins + Math.floor(seconds / 60)
+      t1_secs = seconds % 60
+    }
   }  
   return t1_mins+':'+t1_secs
 }

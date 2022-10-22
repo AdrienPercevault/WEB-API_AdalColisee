@@ -168,10 +168,10 @@ function addTimes(time_list) {
 function diviseTime(time, division) {
   minutes = parseInt(time.split(':')[0]);
   seconds = parseInt(time.split(':')[1]);
-  seconds = seconds + (minutes * 60 / division)
-  minutes = Math.floor(seconds / 60)
-  seconds = seconds % 60
-  return minutes+':'+seconds
+  seconds = (seconds + minutes * 60) / division;
+  minutes = Math.floor(seconds / 60);
+  seconds = seconds % 60;
+  return minutes+':'+seconds;
 }
 
 // Parse to int
