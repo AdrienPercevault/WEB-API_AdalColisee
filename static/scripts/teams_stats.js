@@ -122,6 +122,7 @@ function loadGameStats() {
       document.getElementById('barons-average').innerHTML += (barons_sum / games_sum).toFixed(2);
 
       // Duration average
+      console.log(duration_list)
       const duration_sum = addTimes(duration_list);
       duration_average = diviseTime(duration_sum, games_sum);
       document.getElementById('duration-average').innerHTML += duration_average;
@@ -152,11 +153,13 @@ function addTimes(time_list) {
   t1_mins = 0;
   t1_secs = 0;
   for (time of time_list) {
-    t2_mins = parseInt(time.split(':')[0]);
-    t2_secs = parseInt(time.split(':')[1]);
-    seconds = t1_secs + t2_secs
-    t1_mins = t1_mins + t2_mins + Math.floor(seconds / 60)
-    t1_secs = seconds % 60
+    if (time !== '') {
+      t2_mins = parseInt(time.split(':')[0]);
+      t2_secs = parseInt(time.split(':')[1]);
+      seconds = t1_secs + t2_secs
+      t1_mins = t1_mins + t2_mins + Math.floor(seconds / 60)
+      t1_secs = seconds % 60
+    }
   }  
   return t1_mins+':'+t1_secs
 }
@@ -165,7 +168,7 @@ function addTimes(time_list) {
 function diviseTime(time, division) {
   minutes = parseInt(time.split(':')[0]);
   seconds = parseInt(time.split(':')[1]);
-  seconds = minutes * 60 / division
+  seconds = seconds + (minutes * 60 / division)
   minutes = Math.floor(seconds / 60)
   seconds = seconds % 60
   return minutes+':'+seconds

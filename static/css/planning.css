@@ -6,6 +6,10 @@
     text-align:center;
 }
 
+.container {
+    background: #323232;
+    border: 1px solid #ECC19C;
+}
 
 .league-name {
     text-align:center;

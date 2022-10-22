@@ -24,11 +24,11 @@ function loadTable() {
           trHTML_gladiator += '<td>'+object['team_tag']+'</td>';
           trHTML_gladiator += '<td>'+object['team_name']+'</td>'; // TODO Empêcher les injections SQL
           trHTML_gladiator += '<td style="text-align:center;">'+object['team_wins']+' ';
-          if (user_rank == "Admin") {
+          if (user_rank == "X-Y-Z") {
             trHTML_gladiator += add_team_win+''+remove_team_win;
           }
           trHTML_gladiator += '</td><td style="text-align:center;">'+object['team_loses']+' ';
-          if (user_rank == "Admin") {
+          if (user_rank == "X-Y-Z") {
             trHTML_gladiator += add_team_lose+''+remove_team_lose;
           }
           trHTML_gladiator += '</td></tr>';
@@ -39,11 +39,11 @@ function loadTable() {
           trHTML_berserker += '<td>'+object['team_tag']+'</td>';
           trHTML_berserker += '<td>'+object['team_name']+'</td>'; // TODO Empêcher les injections SQL
           trHTML_berserker += '<td style="text-align:center;">'+object['team_wins']+' ';
-          if (user_rank == "Admin") {
+          if (user_rank == "X-Y-Z") {
             trHTML_berserker += add_team_win+''+remove_team_win;
           }
           trHTML_berserker += '</td><td style="text-align:center;">'+object['team_loses']+' ';
-          if (user_rank == "Admin") {
+          if (user_rank == "X-Y-Z") {
             trHTML_berserker += add_team_lose+''+remove_team_lose;
           }
           trHTML_berserker += "</td></tr>";

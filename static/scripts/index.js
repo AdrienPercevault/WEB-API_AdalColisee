@@ -11,7 +11,7 @@ function loadTeamsName() {
       const objects = JSON.parse(this.responseText);
       cardHTML += `
         <li><a class="dropdown-item dropdown-list mt-2" href="/global_stats">Globales</a></li>
-        <li><hr class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider" style="border: black;"></li>
       `
       for (let object of objects) {
         team_name_printable = object['team_name'].replace(/</g, "&lt;").replace(/>/g, "&gt;");

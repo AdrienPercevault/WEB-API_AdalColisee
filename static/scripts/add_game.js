@@ -172,7 +172,6 @@ function addGame() {
       Swal.fire("Game " + team_blue_side + " VS "  + team_red_side + " ajouté avec succès !");
       loadValueByGameID();
       createTeamsStats();
-      getTeamWinsLoses();
     }
   };
 }
@@ -249,7 +248,6 @@ function updateGame() {
       Swal.fire("Game " + team_blue_side + " VS "  + team_red_side + " modifié avec succès !");
       loadValueByGameID();
       createTeamsStats();
-      getTeamWinsLoses();
     }
   };
 }
@@ -406,68 +404,6 @@ function updateStats(team_dict_stats) {
   xhttp.open("PUT", "/stats?season="+season_id['season']);
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify(Object.assign({}, season_id, team_dict_stats)));
-}
-
-
-
-
-
-// ----- Set Teams wins & loses ----- //
-// ---------------------------------- //
-
-// Create games stats by team
-function getTeamWinsLoses() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/stats?season=S3");
-  xhttp.send();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      const object = JSON.parse(this.responseText);
-      const teams_list = Object.keys(object);
-      teams_list.shift();
-      for (team_name of teams_list) {
-        updateTeamWinsLoses(team_name, object[team_name]['wins'], object[team_name]['loses'])
-      }
-    }
-  };
-}
-
-// Update teams wins & loses
-function updateTeamWinsLoses(team_name, wins, loses) {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", "/teams?team_name="+team_name);
-  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhttp.send(JSON.stringify({
-    "team_wins": wins,
-    "team_loses": loses
-  }));
-}
-
-
-
-
-
-// ----- Set wins & loses ----- //
-// ---------------------------- //
-// Get wins & loses 
-function getWinsLoses(default_team_name) {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/stats?season=S3");
-  xhttp.send();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      const object = JSON.parse(this.responseText);
-      const teams_list = Object.keys(object);
-      wins = 0, loses = 0;
-      for (let team_name of teams_list) {
-        if (team_name == default_team_name) {
-          wins += object[team_name]["wins"];
-          loses += object[team_name]["loses"];
-        }
-      }
-      return [wins, loses];
-    }
-  };
 }
 
 

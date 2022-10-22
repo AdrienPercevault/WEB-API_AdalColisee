@@ -157,6 +157,82 @@ function changeWinnerSide(week_index, league, match_index, side) {
     if (this.readyState == 4 && this.status == 200) {
       const object = JSON.parse(this.responseText);
       loadPlanning();
+      getTeamsWinsLoses(week_index, league, match_index)
     }
   };
+}
+
+
+
+
+
+// ----- Set Teams wins & loses ----- //
+// ---------------------------------- //
+
+// Initialize wins loses by team
+function getTeamsWinsLoses(current_week_index, current_league, current_match_index) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/schedules?phase=group");
+  xhttp.send();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const object = JSON.parse(this.responseText);
+      current_match = object['weeks'][current_week_index][current_league][current_match_index]
+      teams_wins_loses = {}
+      // Load matches create wins loses list
+      for (week_index in object['weeks']) {
+        week = object['weeks'][week_index]
+        for (match_index in week['gladiateur']) {
+          teams_wins_loses = initWinsLoses(teams_wins_loses, week['gladiateur'], match_index)
+        }
+        for (match_index in week['berserker']) {
+          teams_wins_loses = initWinsLoses(teams_wins_loses, week['berserker'], match_index)
+        }
+      }
+      teams_list = Object.keys(teams_wins_loses);
+      for (team of teams_list) {
+        if (team == current_match['team_blue_side'] || team == current_match['team_red_side']) {
+          updateTeamWinsLoses(team, teams_wins_loses[team]['wins'], teams_wins_loses[team]['loses'])
+        }
+      }
+    }
+  };
+}
+
+// Initialise wins loses list for one league
+function initWinsLoses(teams_wins_loses, league, match_index) {
+  match = league[match_index]
+  if (!(match['team_blue_side'] in teams_wins_loses)) {
+    teams_wins_loses[match['team_blue_side']] = {
+      'wins': 0,
+      'loses': 0
+    }
+  }
+  if (!(match['team_red_side'] in teams_wins_loses)) {
+    teams_wins_loses[match['team_red_side']] = {
+      'wins': 0,
+      'loses': 0
+    }
+  }
+  if (match['side_winner'] == 'blue') {
+    teams_wins_loses[match['team_blue_side']]['wins'] = teams_wins_loses[match['team_blue_side']]['wins'] + 1
+    teams_wins_loses[match['team_red_side']]['loses'] = teams_wins_loses[match['team_red_side']]['loses'] + 1
+  }
+  else if (match['side_winner'] == 'red') {
+    teams_wins_loses[match['team_red_side']]['wins'] = teams_wins_loses[match['team_red_side']]['wins'] + 1
+    teams_wins_loses[match['team_blue_side']]['loses'] = teams_wins_loses[match['team_blue_side']]['loses'] + 1
+  }
+  return teams_wins_loses
+}
+
+// Update teams wins & loses
+function updateTeamWinsLoses(team_name, wins, loses) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("PUT", "/teams?team_name="+team_name);
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify({
+    "team_wins": wins,
+    "team_loses": loses,
+    "team_score": wins - loses
+  }));
 }
