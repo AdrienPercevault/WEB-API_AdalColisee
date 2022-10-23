@@ -43,3 +43,10 @@
 .description {
     -webkit-text-fill-color: #ECC19C;
 }
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}

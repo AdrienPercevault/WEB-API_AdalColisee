@@ -30,7 +30,7 @@ function loadTable() {
         cardHTML += `
         <div class="col p-4">
           <div class="card">
-          <img class="m-5" style="border-radius: 10%; border: 1px solid #ECC19C;" src="`+team_name_no_space+`"></img>
+          <img class="m-5 mx-auto" src="`+team_name_no_space+`"></img>
             <div class="card-body">
               <div class="col">
                 <h3 class="card-title"><b>[`+object[`team_tag`]+`]</b> `+object[`team_name`]+`</h3>
