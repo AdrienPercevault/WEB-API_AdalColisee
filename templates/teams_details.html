@@ -3,11 +3,15 @@
 
 {% block content %}
 
+{{ JSGlue.include() }}
+
 <link href="{{ url_for('static', filename='/css/teams_details.css') }}" rel="stylesheet">
 
 <div class="d-flex justify-content-center p-4">
   <button id="add-team-button" type="button" class="btn btn-lg" onclick="showTeamCreateBox()" hidden="hidden">Ajout d'une nouvelle équipe</button>
 </div>
+
+<!-- <img src="{{ url_for('static', filename='/logos/BannedSeagull.png') }}"/> -->
 
 <div class="container-fluid">
   <div id="card-team" class="row row row-cols-1 row-cols-md-3 g-2">

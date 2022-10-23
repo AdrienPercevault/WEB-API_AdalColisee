@@ -126,7 +126,7 @@ function loadPlanning() {
                   </table>
                 </div>
               </div>
-              <p class="small">Du 03 octobre au 09 octobre</p>
+              <p class="small">Du 03 octobre au 06 novembre 2022</p>
             </div>`
           }
         }
