@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, render_template, session, redirect, url_for
+from flask import Flask, Response, request, render_template, session, redirect, url_for, send_file
 from interactor.mongo_interactor import TeamsMongoAPI, UsersMongoAPI, GamesMongoAPI, SchedulesMongoAPI, StatsMongoAPI
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -396,6 +396,74 @@ def mongo_update_stat():
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
+
+
+
+
+
+# ----- Team Logos ----- #
+# ---------------------- #
+
+# To change and add image in the database but need to change DB.
+@app.route('/AcadémieFruitière')
+def academieLogo():
+    if not os.path.exists('./static/logos/AcadémieFruitière.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/AcadémieFruitière.png', mimetype='image')
+
+@app.route('/Astral')
+def astralLogo():
+    if not os.path.exists('./static/logos/Astral.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/Astral.png', mimetype='image')
+
+@app.route('/BannedSeagull')
+def bannedLogo():
+    if not os.path.exists('./static/logos/BannedSeagull.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/BannedSeagull.png', mimetype='image')
+
+@app.route('/Initium')
+def initiumLogo():
+    if not os.path.exists('./static/logos/Initium.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/Initium.png', mimetype='image')
+
+@app.route('/MonarchieFruitière')
+def monarchieLogo():
+    if not os.path.exists('./static/logos/MonarchieFruitière.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/MonarchieFruitière.png', mimetype='image')
+
+@app.route('/Morues')
+def moruesLogo():
+    if not os.path.exists('./static/logos/Morues.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/Morues.png', mimetype='image')
+
+@app.route('/PolicedeMarseille')
+def policeLogo():
+    if not os.path.exists('./static/logos/PolicedeMarseille.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/PolicedeMarseille.png', mimetype='image')
+
+@app.route('/Shteamles')
+def shLogo():
+    if not os.path.exists('./static/logos/Shteamles.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/Shteamles.png', mimetype='image')
+
+@app.route('/SpicyGaming')
+def spicyLogo():
+    if not os.path.exists('./static/logos/SpicyGaming.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/SpicyGaming.png', mimetype='image')
+
+@app.route('/Zerotankiness')
+def zeroLogo():
+    if not os.path.exists('./static/logos/Zerotankiness.png'):
+        return send_file('./static/logos/BeeMad.png', mimetype='image')
+    return send_file('./static/logos/Zerotankiness.png', mimetype='image')
 
 
 

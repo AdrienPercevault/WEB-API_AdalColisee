@@ -122,7 +122,6 @@ function loadGameStats() {
       document.getElementById('barons-average').innerHTML += (barons_sum / games_sum).toFixed(2);
 
       // Duration average
-      console.log(duration_list)
       const duration_sum = addTimes(duration_list);
       duration_average = diviseTime(duration_sum, games_sum);
       document.getElementById('duration-average').innerHTML += duration_average;

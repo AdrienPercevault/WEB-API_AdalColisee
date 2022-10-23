@@ -58,8 +58,6 @@ function loadStats() {
           assists_dict_average[team_name] = object[team_name]['assists'] / games_sum;
           assists_list_average.push(object[team_name]['assists'] / games_sum);
           // Duration
-          console.log(team_name)
-          console.log(object[team_name]['game_duration'])
           average_duration = parseTime([diviseTime(object[team_name]['game_duration'], games_sum)])
           duration_dict_average[team_name] = average_duration;
           duration_list_average.push(average_duration);

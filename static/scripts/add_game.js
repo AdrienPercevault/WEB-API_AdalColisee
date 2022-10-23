@@ -365,7 +365,6 @@ function createTeamsStats() {
 
 // Init teams dict
 function initDict(team_list_name, duration="00:00", kills=0, deaths=0, assists=0, towers=0, inibitors=0, barons=0, dragons=0, heralds=0, golds=0, wins=0, loses=0) {
-  console.log(duration)
   if (team_list_name !== undefined) {
     return {
       "game_duration": addTimes([team_list_name["game_duration"], duration]),
