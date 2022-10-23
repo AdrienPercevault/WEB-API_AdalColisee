@@ -1,6 +1,5 @@
 from flask import Flask, Response, request, render_template, session, redirect, url_for
 from interactor.mongo_interactor import TeamsMongoAPI, UsersMongoAPI, GamesMongoAPI, SchedulesMongoAPI, StatsMongoAPI
-from flask_jsglue import JSGlue
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -13,7 +12,6 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET_KEY")
 CORS(app)
-jsglue = JSGlue(app)
 
 
 

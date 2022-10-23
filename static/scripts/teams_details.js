@@ -26,7 +26,7 @@ function loadTable() {
         object['team_captain'] = object['team_captain'].replace(/</g, "&lt;").replace(/>/g, "&gt;");
         object['team_description'] = object['team_description'].replace(/</g, "&lt;").replace(/>/g, "&gt;");
         team_name_no_space = object['team_name'].replace( /\s/g, '')
-        img = Flask.url_for("static", {"filename": "/logos/BannedSeagull.png"})
+        // img = Flask.url_for("static", {"filename": "/logos/BannedSeagull.png"})
         // <img src="{{ url_for(static, {filename:/logos/BannedSeagull.png}) }}"></img>
 
         cardHTML += `
