@@ -83,9 +83,15 @@ a {
     cursor: pointer;
 }
 
-.add-game:hover, .add-game:focus {
+.add-game {
     -webkit-text-fill-color: #ECC19C;
     border: 1px solid #ECC19C;
+    background: none;
+}
+
+.add-game:hover, .add-game:focus {
+    -webkit-text-fill-color: #4ECCA3;
+    border: 1px solid #4ECCA3;
     background: none;
 }
 
