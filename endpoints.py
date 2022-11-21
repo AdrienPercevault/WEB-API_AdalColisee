@@ -50,6 +50,15 @@ def planning():
         user_rank = user_data.get('user_rank')
     return render_template('planning.html', user_rank=user_rank)
 
+# Planning playoff page
+@app.route('/planning_playoff')
+def planning_playoff():
+    user_rank = "Member"
+    if "user_name" in session:
+        user_data = UsersMongoAPI().read_one_user({"user_name": session.get('user_name')})
+        user_rank = user_data.get('user_rank')
+    return render_template('planning_playoff.html', user_rank=user_rank)
+
 # Details of one specific team page
 @app.route('/teams_stats')
 def teams_stats():

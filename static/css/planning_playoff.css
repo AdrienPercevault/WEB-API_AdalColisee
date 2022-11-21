@@ -1,0 +1,126 @@
+.cells {
+  background: #323232;
+  border: 1px solid #ECC19C;
+  text-align:center;
+}
+
+.tournament-headers {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid #ECC19C;
+}
+
+h3 {
+  color:white;
+  width: 25%;
+  text-align:center;
+  font-weight: 400;
+  margin: 0;
+  padding:1rem;
+}
+
+.tournament-brackets {
+  display: flex;
+  /* flex-direction: row;  */
+  /* list-style-type: none; */
+}
+
+.bracket {
+  /* padding-left: 0; */
+  display: flex;
+  /* margin: 0; */
+  padding: 30px 0;
+  /* flex-grow: 1; */
+  flex-direction: column;
+  justify-content: space-around;
+  list-style-type: none;
+  flex: 1;
+  /* width: 100%; */
+}
+
+/* Team items */
+.team-item {
+  border: 2px solid #ECC19C;
+  display: flex;
+  margin: 10px;
+  position: relative;
+  /* line-height: 2; */
+  align-items: center;
+  height: 100px;
+}
+
+.team-item:before {
+  content:'';
+  border-top: 1px solid #ECC19C;
+  border-bottom: 1px solid #ECC19C;
+  position: absolute;
+  height: 2px;
+  width: 12px;
+  left: -12px;
+}
+
+.team-item:after {
+  content:'';
+  border-color: #ECC19C;
+  border-width: 2px;
+  position: absolute;
+  width: 12px;
+  right: -12px;
+  border-right-style: solid;
+}
+
+/* Brackets */
+.bracket-1:nth-of-type(odd):after {
+  border-top-style: solid;
+  height: 100%;
+  top: 50%;
+}
+
+.bracket-1:nth-of-type(even):after {
+  border-bottom-style: solid;
+  height: 100%;
+  top: -50%;
+}
+
+.bracket-2:nth-of-type(odd):after {
+  border-top-style: solid;
+  height: 200%;
+  top: 50%;
+}
+
+.bracket-2:nth-of-type(even):after {
+  border-bottom-style: solid;
+  height: 200%;
+  top: -150%;
+}
+
+.bracket-3:after {
+  border-top-style: solid;
+  top: 49%;
+}
+
+
+
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+.btn {
+  border: 5px solid;
+  border-image-slice: 1;
+  background: #323232;
+  -webkit-text-fill-color: white !important;
+  border-image-source: var(--gradient) !important; 
+  width: 100%;
+}
+
+.btn:hover, .btn:focus {
+  background: var(--gradient) !important;
+  -webkit-text-fill-color: white !important;
+  border: 5px solid #14FFEC !important; 
+  box-shadow: #323232 1px 0 10px;
+}

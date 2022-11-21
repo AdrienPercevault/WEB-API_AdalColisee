@@ -98,3 +98,21 @@ a {
 table tr td a {
     display: block;
 }
+
+
+
+.btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background: #323232;
+    -webkit-text-fill-color: white !important;
+    border-image-source: var(--gradient) !important; 
+    width: 100%;
+}
+
+.btn:hover, .btn:focus {
+    background: var(--gradient) !important;
+    -webkit-text-fill-color: white !important;
+    border: 5px solid #14FFEC !important; 
+    box-shadow: #323232 1px 0 10px;
+}

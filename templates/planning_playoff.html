@@ -1,0 +1,94 @@
+{% extends "index.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/planning_playoff.css') }}" rel="stylesheet">
+
+<div class="d-flex justify-content-center p-4">
+  <button id="planning-group" type="button" class="btn btn-lg text-uppercase">
+    <a class="nav-link" href="/planning">Planning de la phase de group</a>
+  </button>
+</div>
+
+<div class="container mt-5 p-2 cells">
+  <h1 class="text-uppercase phase-title">Playoff</h1>
+</div>
+
+<div class="container-fluid mt-2 p-5">
+  <div class="tournament-container cells">
+    <div class="tournament-headers">
+      <h3>Quarts de finale - BO3</h3>
+      <h3>Demis finales - BO3</h3>
+      <h3>Petite finale - BO5</h3>
+      <h3>Finale - BO5</h3>
+    </div>
+
+    <div class="tournament-brackets">
+      <table class="bracket">
+        <tbody>
+          <tr class="bracket-1 team-item">
+            <td style="width:45%;">Monarchie Fruitière</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">Initium</td>
+          </tr>
+          <tr class="bracket-1 team-item">
+            <td style="width:45%;">Académie Fruitière</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">Astral</td>
+          </tr>
+          <tr class="bracket-1 team-item">
+            <td style="width:45%;">Police de Marseille</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">Morues</td>
+          </tr>
+          <tr class="bracket-1 team-item">
+            <td style="width:45%;">Banned Seagull</td>
+            <td style="width:10%;">2 : 0</td>
+            <td style="width:45%;">Spicy Gaming</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="bracket">
+        <tbody>
+          <tr class="bracket-2 team-item" style="margin-bottom: 120px;">
+            <td style="width:45%;">...</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">...</td>
+          </tr>
+          <tr class="bracket-2 team-item">
+            <td style="width:45%;">...</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">Banned Seagull</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="bracket">
+        <tbody>
+          <tr class="bracket-3 team-item">
+            <td style="width:45%;">...</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">...</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="bracket">
+        <tbody>
+          <tr class="bracket-3 team-item">
+            <td style="width:45%;">...</td>
+            <td style="width:10%;">0 : 0</td>
+            <td style="width:45%;">...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='/scripts/planning_playoff.js') }}"></script>
+
+{% endblock %}

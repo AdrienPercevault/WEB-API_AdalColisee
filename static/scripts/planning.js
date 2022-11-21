@@ -95,7 +95,7 @@ function loadPlanning() {
               match = week['berserker'][match_index]
               cardHTML += `<tr>`
               if (match['side_winner'] == "blue") {
-                cardHTML += `<td class="bi-trophy"></a></td>`
+                cardHTML += `<td class="bi-trophy"></td>`
               }
               else {
                 if (user_rank == "Admin" || user_rank == "Captain") {
