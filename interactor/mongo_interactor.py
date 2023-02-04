@@ -120,8 +120,8 @@ class GamesMongoAPI:
 
 
 
-# ----- PLANNING API ----- #
-# ------------------------ #
+# ----- PLANNING SCHEDULES API ----- #
+# ---------------------------------- #
 class SchedulesMongoAPI:
     # Initialisation of Mongo Database informations.
     def __init__(self):
@@ -159,6 +159,52 @@ class SchedulesMongoAPI:
 	# Delete Method
 	# This method allows us to delete one existing document in our collection.
     def delete_schedule(self, selector):
+        response = self.collection.delete_one(selector)
+        return {'Status': 'Successfully Deleted' if response.deleted_count > 0 else "Document not found."}
+
+
+
+
+
+# ----- MATCHES API ----- #
+# ----------------------- #
+class MatchesMongoAPI:
+    # Initialisation of Mongo Database informations.
+    def __init__(self):
+        self.client = MongoClient(MONGODB_URL, connect=False)
+        database = DATABASE_NAME
+        collection = "Matches"
+
+        cursor = self.client[database]
+        self.collection = cursor[collection]
+        self.collection.create_index('match_id', unique=True)
+
+	# Read Method
+	# This method allows us to read all of the documents present in our collection and sort it by the date id.
+    def read_matches(self):
+        documents = self.collection.find({}, {'_id':0}).sort([('match_date', 1),('match_hours', 1)])
+        return [document for document in documents]
+
+	# Read Method
+	# This method allows us to read all of the documents present in our collection and sort it by the match id.
+    def read_one_match(self, selector):         
+        return self.collection.find_one(selector, {'_id':0})
+
+	# Write Method
+	# This method allows us to add a new document in our collection. 
+    def write_match(self, document):
+        response = self.collection.insert_one(document)
+        return {'Status': 'Successfully Inserted', 'Document_ID': str(response.inserted_id)}
+
+	# Update Method
+	# This method allows us to update one existing document in our collection.
+    def update_match(self, selector, document):
+        response = self.collection.update_one(selector, document) #, upsert=True
+        return {'Status': 'Successfully Updated' if response.modified_count > 0 else "Nothing was updated."}
+
+	# Delete Method
+	# This method allows us to delete one existing document in our collection.
+    def delete_match(self, selector):
         response = self.collection.delete_one(selector)
         return {'Status': 'Successfully Deleted' if response.deleted_count > 0 else "Document not found."}
 

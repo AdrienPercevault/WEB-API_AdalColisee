@@ -1,11 +1,12 @@
 from flask import Flask, Response, request, render_template, session, redirect, url_for, send_file
-from interactor.mongo_interactor import TeamsMongoAPI, UsersMongoAPI, GamesMongoAPI, SchedulesMongoAPI, StatsMongoAPI
+from interactor.mongo_interactor import TeamsMongoAPI, UsersMongoAPI, GamesMongoAPI, SchedulesMongoAPI, StatsMongoAPI, MatchesMongoAPI
 from flask_cors import CORS
 from dotenv import load_dotenv
 
 import os
 import json
 import bcrypt
+import hashlib
 
 
 load_dotenv()
@@ -22,6 +23,11 @@ CORS(app)
 @app.route('/')
 def index():
     return redirect(url_for("ranking"))
+
+# Settlement page
+@app.route('/settlement')
+def settlement():
+    return render_template('settlement.html')
 
 # Ranking page
 @app.route('/ranking')
@@ -48,7 +54,7 @@ def planning():
     if "user_name" in session:
         user_data = UsersMongoAPI().read_one_user({"user_name": session.get('user_name')})
         user_rank = user_data.get('user_rank')
-    return render_template('planning.html', user_rank=user_rank)
+    return render_template('planning_matches.html', user_rank=user_rank)
 
 # Planning playoff page
 @app.route('/planning_playoff')
@@ -69,13 +75,13 @@ def teams_stats():
     return render_template('teams_stats.html', user_rank=user_rank)
 
 # Form to add a new game for a match
-@app.route('/add_game')
-def add_game():
+@app.route('/game_details')
+def game_details():
     user_rank = "Member"
     if "user_name" in session:
         user_data = UsersMongoAPI().read_one_user({"user_name": session.get('user_name')})
         user_rank = user_data.get('user_rank')
-    return render_template('add_game.html', user_rank=user_rank)
+    return render_template('game_details.html', user_rank=user_rank)
 
 # Form to add a new game for a match
 @app.route('/global_stats')
@@ -240,71 +246,71 @@ def mongo_delete_team():
 
 
 
-# ----- GAMES ENDPOINTS ----- #
-# --------------------------- #
+# # ----- GAMES ENDPOINTS ----- #
+# # --------------------------- #
 
-# Get all or one game
-@app.route('/games', methods=['GET'])
-def mongo_read_games():
-    mongoAPI = GamesMongoAPI()
-    game_id = request.args.get('game_id')
-    team_name = request.args.get('team_name')
-    if game_id:
-        response = mongoAPI.read_one_game({'game_id': game_id})
-    elif team_name:
-        response = mongoAPI.read_games_by_name(team_name)
-    else:
-        response = mongoAPI.read_games()
-    return Response(response=json.dumps(response),
-                    status=200,
-                    mimetype='application/json')
+# # Get all or one game
+# @app.route('/games', methods=['GET'])
+# def mongo_read_games():
+#     mongoAPI = GamesMongoAPI()
+#     game_id = request.args.get('game_id')
+#     team_name = request.args.get('team_name')
+#     if game_id:
+#         response = mongoAPI.read_one_game({'game_id': game_id})
+#     elif team_name:
+#         response = mongoAPI.read_games_by_name(team_name)
+#     else:
+#         response = mongoAPI.read_games()
+#     return Response(response=json.dumps(response),
+#                     status=200,
+#                     mimetype='application/json')
 
-# Add one game
-@app.route('/games', methods=['POST'])
-def mongo_write_game():
-    document = request.json
-    if not document:
-        return Response(response=json.dumps({"Error": "Please, provide the game information to add it."}),
-                        status=400,
-                        mimetype='application/json')
-    response = GamesMongoAPI().write_game(document)
-    return Response(response=json.dumps(response),
-                    status=200,
-                    mimetype='application/json')
+# # Add one game
+# @app.route('/games', methods=['POST'])
+# def mongo_write_game():
+#     document = request.json
+#     if not document:
+#         return Response(response=json.dumps({"Error": "Please, provide the game information to add it."}),
+#                         status=400,
+#                         mimetype='application/json')
+#     response = GamesMongoAPI().write_game(document)
+#     return Response(response=json.dumps(response),
+#                     status=200,
+#                     mimetype='application/json')
 
-# Update one game
-@app.route('/games', methods=['PUT'])
-def mongo_update_game():
-    game_id = request.args.get('game_id')
-    document = request.json
-    if not game_id or not document:
-        return Response(response=json.dumps({"Error": "Please, provide the changes and the game id to update."}),
-                        status=400,
-                        mimetype='application/json')
-    response = GamesMongoAPI().update_game({'game_id': game_id}, {'$set': document})
-    return Response(response=json.dumps(response),
-                    status=200,
-                    mimetype='application/json')
+# # Update one game
+# @app.route('/games', methods=['PUT'])
+# def mongo_update_game():
+#     game_id = request.args.get('game_id')
+#     document = request.json
+#     if not game_id or not document:
+#         return Response(response=json.dumps({"Error": "Please, provide the changes and the game id to update."}),
+#                         status=400,
+#                         mimetype='application/json')
+#     response = GamesMongoAPI().update_game({'game_id': game_id}, {'$set': document})
+#     return Response(response=json.dumps(response),
+#                     status=200,
+#                     mimetype='application/json')
 
-# Delete one game
-@app.route('/games', methods=['DELETE'])
-def mongo_delete_game():
-    game_id = request.args.get('game_id')
-    if not game_id:
-        return Response(response=json.dumps({"Error": "Please, provide the game id to delete."}),
-                        status=400,
-                        mimetype='application/json')
-    response = GamesMongoAPI().delete_game({'game_id': game_id})
-    return Response(response=json.dumps(response),
-                    status=200,
-                    mimetype='application/json')
-
-
+# # Delete one game
+# @app.route('/games', methods=['DELETE'])
+# def mongo_delete_game():
+#     game_id = request.args.get('game_id')
+#     if not game_id:
+#         return Response(response=json.dumps({"Error": "Please, provide the game id to delete."}),
+#                         status=400,
+#                         mimetype='application/json')
+#     response = GamesMongoAPI().delete_game({'game_id': game_id})
+#     return Response(response=json.dumps(response),
+#                     status=200,
+#                     mimetype='application/json')
 
 
 
-# ----- SCHEDULE ENDPOINTS ----- #
-# ------------------------------ #
+
+
+# ----- SCHEDULE PLANNING ENDPOINTS ----- #
+# --------------------------------------- #
 
 # Get all or one schedule
 @app.route('/schedules', methods=['GET'])
@@ -355,6 +361,94 @@ def mongo_delete_schedule():
                         status=400,
                         mimetype='application/json')
     response = SchedulesMongoAPI().delete_schedule({'phase': phase})
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+
+
+
+
+# ----- MATCHES ENDPOINTS ----- #
+# ------------------------------ #
+
+# Get all or one match
+@app.route('/matches', methods=['GET'])
+def mongo_read_match():
+    mongoAPI = MatchesMongoAPI()
+    match_id = request.args.get('match_id')
+    if match_id:
+        response = mongoAPI.read_one_match({'match_id': match_id})
+    else:
+        response = mongoAPI.read_matches()
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+# Add one match
+@app.route('/matches', methods=['POST'])
+def mongo_write_match():
+    document = request.json
+    document["match_date"] = document["match_date"] if document.get("match_date") else "0000-00-00"
+    document["match_hours"] = document["match_hours"] if document.get("match_hours") else "00-00"
+    document["match_score"] = document["match_score"] if document.get("match_score") else "0-0"
+    document["match_bo"] = document["match_bo"] if document.get("match_bo") else "BO1"
+    document["match_id"] = hashlib.sha1(str.encode(document["match_date"]+document["match_hours"]+document["match_team1"]+document["match_team2"])).hexdigest()
+    if not document:
+        return Response(response=json.dumps({"Error": "Please, provide the match information to add it."}),
+                        status=400,
+                        mimetype='application/json')
+    response = MatchesMongoAPI().write_match(document)
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+# Update one match
+@app.route('/matches', methods=['PUT'])
+def mongo_update_match():
+    match_id = request.args.get('match_id')
+    document = request.json
+    if not match_id or not document:
+        return Response(response=json.dumps({"Error": "Please, provide the changes and match_id to update the match for this match_id."}),
+                        status=400,
+                        mimetype='application/json')
+    response = MatchesMongoAPI().update_match({'match_id': match_id}, {'$set': document})
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+# Update match_games to add or update one game
+@app.route('/games', methods=['PUT'])
+def mongo_update_game():
+    match_id = request.args.get('match_id')
+    game_id = request.args.get('game_id')
+    index = request.args.get('index')
+    document = request.json
+    if not match_id or not document:
+        return Response(response=json.dumps({"Error": "Please, provide the changes and match_id to update the match for this match_id."}),
+                        status=400,
+                        mimetype='application/json')
+    if game_id and index:
+        # response = MatchesMongoAPI().update_match({'match_id': match_id}, {'$pull': {'match_games.'+index : document}})
+        response = MatchesMongoAPI().update_match({'match_id': match_id}, {'$pull': {'match_games' : document }})
+
+    if index:
+        response = MatchesMongoAPI().update_match({'match_id': match_id}, {'$set': {'match_games.'+index : document}})
+    else:
+        response = MatchesMongoAPI().update_match({'match_id': match_id}, {'$push': {'match_games' : document}})
+    return Response(response=json.dumps(response),
+                    status=200,
+                    mimetype='application/json')
+
+# Delete one match
+@app.route('/matches', methods=['DELETE'])
+def mongo_delete_match():
+    match_id = request.args.get('match_id')
+    if not match_id:
+        return Response(response=json.dumps({"Error": "Please, provide the match_id to delete the match for this match_id."}),
+                        status=400,
+                        mimetype='application/json')
+    response = MatchesMongoAPI().delete_match({'match_id': match_id})
     return Response(response=json.dumps(response),
                     status=200,
                     mimetype='application/json')
@@ -482,5 +576,5 @@ def zeroLogo():
 # ---------------------- #
 
 if __name__ == '__main__':
-    # app.run(debug=True, port=5001, host='0.0.0.0') # Dev
-    app.run()
+    app.run(debug=True, port=5001, host='0.0.0.0') # Dev
+    # app.run()

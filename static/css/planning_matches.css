@@ -1,0 +1,54 @@
+.title {
+  text-align: center;
+  -webkit-text-fill-color: #4ECCA3;
+  border-bottom: 1px solid #ECC19C;
+}
+
+.bi-award {
+  -webkit-text-fill-color: #4ECCA3;
+}
+
+.bi-x {
+  -webkit-text-fill-color: #e44c44;
+}
+
+.btn {
+  border: 5px solid;
+  border-image-slice: 1;
+  background: #323232;
+  -webkit-text-fill-color: white !important;
+  border-image-source: var(--gradient) !important; 
+  width: 100%;
+}
+
+.btn:hover, .btn:focus {
+  background: var(--gradient) !important;
+  -webkit-text-fill-color: white !important;
+  border: 5px solid #14FFEC !important; 
+  box-shadow: #323232 1px 0 10px;
+}
+
+.select {
+  background: white;
+}
+
+.match-table {
+  background: #323232;
+  width: 100%;
+  border: 1px solid #ECC19C;
+  text-align: center;
+}
+
+.match-button {
+  background: #323232;
+  -webkit-text-fill-color: white;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.line-game {
+  line-height: 4rem;
+  border-bottom: 1px solid #ECC19C;
+  color: rgba(250, 250, 250, 0.8);
+  text-align: center;
+}

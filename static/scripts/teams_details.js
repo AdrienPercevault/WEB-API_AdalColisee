@@ -26,9 +26,9 @@ function loadTable() {
         object['team_captain'] = object['team_captain'].replace(/</g, "&lt;").replace(/>/g, "&gt;");
         object['team_description'] = object['team_description'].replace(/</g, "&lt;").replace(/>/g, "&gt;");
         team_name_no_space = object['team_name'].replace( /\s/g, '')
-               
+
         cardHTML += `
-        <div class="col p-4">
+        <div class="col p-2">
           <div class="card">
           <img class="m-5 mx-auto" src="`+team_name_no_space+`"></img>
             <div class="card-body">
@@ -39,7 +39,7 @@ function loadTable() {
                 <p class="card-text"><b>Capitaine</b> : `+object[`team_captain`]+`</p>
                 <p class="card-text"><b>Ligue</b> : `+object[`team_league`]+`</p>
                 <p class="card-text"><b>Opgg</b> : <a href="`+object[`team_opgg`]+`">[Lien]</a></p>`
-  
+
         if (object[`team_coach`] !== 'Non renseigné') {
           cardHTML += `
           <p class="card-text"><b>Coach</b> : `+object[`team_coach`]+`</p>`

@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block title %}Colisee S3 - Equipes{% endblock %}
+
+{% block content %}
+
+<link href="{{ url_for('static', filename='/css/planning_matches.css') }}" rel="stylesheet">
+
+
+<div class="d-flex justify-content-center p-2">
+  <button id="add-match-button" type="button" class="btn btn-lg" onclick="showMatchCreateBox()" hidden="hidden">Ajouter un match</button>
+</div>
+
+
+
+<div class="container-fluid p-4">
+  <div class="d-flex bd-highlight mb-3">
+    <div class="me-auto p-2 bd-highlight title"><h2>Matchs</h2></div>
+  </div>
+  <ul class="mb-4" id="matches_next">
+    <div>Loading matchs...</div>
+  </ul>
+
+  <div class="d-flex bd-highlight mb-3">
+    <div class="me-auto p-2 bd-highlight title"><h2>Matchs passés</h2></div>
+  </div>
+  <ul class="mb-4" id="matches_prev">
+    <div>Loading matchs...</div>
+  </ul>
+</div>
+
+
+
+<script src="{{ url_for('static', filename='/scripts/planning_matches.js') }}"></script>
+
+{% endblock %}
